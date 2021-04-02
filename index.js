@@ -1,3 +1,4 @@
+const axios = require("axios");
 const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
 const Searches = require("./models/searches");
 
@@ -11,6 +12,8 @@ const main = async () => {
       case 1:
         //show massage
         //
+        const place = await readInput("City: ");
+        console.log(place);
         //search places
         //
         //select place
