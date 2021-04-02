@@ -20,7 +20,12 @@ class Searches {
         params: this.paramsMapbox,
       });
       const resp = await instance.get();
-      console.log(resp.data);
+      return resp.data.features.map((place) => ({
+        id: place.id,
+        name: place.place_name,
+        lng: place.center[0],
+        lng: place.center[1],
+      }));
     } catch (error) {
       return []; //return all places that match whith the place
     }

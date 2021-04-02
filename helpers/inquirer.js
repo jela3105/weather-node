@@ -53,16 +53,18 @@ const readInput = async (message) => {
   return desc;
 };
 
-const deleteTasksList = async (tasks = []) => {
-  const choices = tasks.map((task, i) => {
+const placesList = async (places = []) => {
+  const choices = places.map((place, i) => {
     const idx = `${i + 1}.`.green;
     return {
-      value: task.id,
-      name: `${idx} ${task.desc}`,
+      value: place.id,
+      name: `${idx}. ${place.name}`,
     };
   });
   choices.unshift({ value: "0", name: "0.".green + " Cancel" });
-  const questions = [{ type: "list", name: "id", message: "Delete", choices }];
+  const questions = [
+    { type: "list", name: "id", message: "Select place", choices },
+  ];
   const { id } = await inquirer.prompt(questions);
   return id;
 };
@@ -91,7 +93,7 @@ module.exports = {
   inquirerMenu,
   pause,
   readInput,
-  deleteTasksList,
   confirm,
+  placesList,
   completeTaskCheckList,
 };

@@ -1,5 +1,10 @@
 require("dotenv").config();
-const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
+const {
+  readInput,
+  inquirerMenu,
+  pause,
+  placesList,
+} = require("./helpers/inquirer");
 const Searches = require("./models/searches");
 
 const main = async () => {
@@ -10,15 +15,10 @@ const main = async () => {
     opt = await inquirerMenu();
     switch (opt) {
       case 1:
-        //show massage
-        //
-        const place = await readInput("City: ");
-        await searches.city(place);
-        console.log(place);
-        //search places
-        //
-        //select place
-        //
+        const placeToSearch = await readInput("City: ");
+        const places = await searches.city(placeToSearch);
+        const idSelected = await placesList(places);
+        console.log({ idSelected });
         //Weather data
         //
         //show results
