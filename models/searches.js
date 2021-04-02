@@ -5,10 +5,21 @@ class Searches {
     //TODO: Retrieve db if exist
   }
 
+  get paramsMapbox() {
+    return {
+      access_token: "",
+      limit: 5,
+    };
+  }
+
   async city(place = "") {
     //http request
     try {
-      const resp = await axios.get("https://reqres.in/api/userts?page=2");
+      const instance = axios.create({
+        baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
+        params: this.paramsMapbox,
+      });
+      const resp = await instance.get();
       console.log(resp.data);
     } catch (error) {
       return []; //return all places that match whith the place
