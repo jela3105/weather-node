@@ -7,7 +7,7 @@ class Searches {
 
   get paramsMapbox() {
     return {
-      access_token: "",
+      access_token: process.env.MAPBOX_KEY,
       limit: 5,
     };
   }
