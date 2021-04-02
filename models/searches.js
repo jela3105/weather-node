@@ -24,7 +24,7 @@ class Searches {
         id: place.id,
         name: place.place_name,
         lng: place.center[0],
-        lng: place.center[1],
+        lat: place.center[1],
       }));
     } catch (error) {
       return []; //return all places that match whith the place
