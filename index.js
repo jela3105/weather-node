@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
 const Searches = require("./models/searches");
 
@@ -13,6 +12,7 @@ const main = async () => {
         //show massage
         //
         const place = await readInput("City: ");
+        await searches.city(place);
         console.log(place);
         //search places
         //

@@ -1,3 +1,4 @@
+const axios = require("axios");
 class Searches {
   history = ["Ciudad de Mexico", "Madrid"];
   constructor() {
@@ -6,8 +7,12 @@ class Searches {
 
   async city(place = "") {
     //http request
-    console.log(place);
-    return []; //return all places that match whith the place
+    try {
+      const resp = await axios.get("https://reqres.in/api/userts?page=2");
+      console.log(resp.data);
+    } catch (error) {
+      return []; //return all places that match whith the place
+    }
   }
 }
 
