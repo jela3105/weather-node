@@ -8,6 +8,14 @@ class Searches {
     this.readDB();
   }
 
+  get capitalizedHistory() {
+    return this.history.map((place) => {
+      let words = place.split(" ");
+      words = words.map((word) => word[0].toUpperCase() + word.substring(1));
+      return words.join(" ");
+    });
+  }
+
   get paramsMapbox() {
     return {
       access_token: process.env.MAPBOX_KEY,
