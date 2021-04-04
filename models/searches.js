@@ -1,6 +1,9 @@
+const fs = require("fs");
+
 const axios = require("axios");
 class Searches {
   history = [];
+  dbPath = "./db/database.json";
   constructor() {
     //TODO: Retrieve db if exist
   }
@@ -61,7 +64,17 @@ class Searches {
     if (this.history.includes(place.toLocaleLowerCase())) return;
 
     this.history.unshift(place.toLocaleLowerCase());
+    this.saveDB();
   }
+
+  saveDB() {
+    const payload = {
+      history: this.history,
+    };
+    fs.writeFileSync(this.dbPath, JSON.stringify(payload));
+  }
+
+  readDB() {}
 }
 
 module.exports = Searches;
