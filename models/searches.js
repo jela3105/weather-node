@@ -5,7 +5,7 @@ class Searches {
   history = [];
   dbPath = "./db/database.json";
   constructor() {
-    //TODO: Retrieve db if exist
+    this.readDB();
   }
 
   get paramsMapbox() {
@@ -74,7 +74,15 @@ class Searches {
     fs.writeFileSync(this.dbPath, JSON.stringify(payload));
   }
 
-  readDB() {}
+  readDB() {
+    if (!fs.existsSync(this.dbPath)) {
+      return null;
+    }
+    const info = fs.readFileSync(this.dbPath, { encoding: "utf-8" });
+    const data = JSON.parse(info);
+    console.log(data);
+    this.history = data.history;
+  }
 }
 
 module.exports = Searches;
