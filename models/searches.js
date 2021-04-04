@@ -1,6 +1,6 @@
 const axios = require("axios");
 class Searches {
-  history = ["Ciudad de Mexico", "Madrid"];
+  history = [];
   constructor() {
     //TODO: Retrieve db if exist
   }
@@ -55,6 +55,12 @@ class Searches {
     } catch (error) {
       console.log(error);
     }
+  }
+  addHistory(place = "") {
+    // TODO: prevent duplicated
+    if (this.history.includes(place.toLocaleLowerCase())) return;
+
+    this.history.unshift(place.toLocaleLowerCase());
   }
 }
 
