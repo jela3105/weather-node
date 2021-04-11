@@ -2,11 +2,11 @@
 Project to learn how to make http requests to other API with node.
 
 ## Quick start 
-Install [nodejs](https://nodejs.org/en/download/):
+Install [nodejs](https://nodejs.org/en/download/)
 
-Clone the and open the proyect:
+Clone the and open the project:
 ```sh
-git clone https://github.com/jela3105/weather-node/
+git clone https://github.com/jela3105/weather-node.git
 cd weather-node
 ```
 Create the file ```.env``` 
